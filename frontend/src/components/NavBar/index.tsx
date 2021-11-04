@@ -1,4 +1,4 @@
-import ImgDsDark from 'assets/img/ds-dark.jpg'
+import ImgDsDark from 'assets/img/ds-dark.svg'
 
 const NavBar = () => {
     return (
