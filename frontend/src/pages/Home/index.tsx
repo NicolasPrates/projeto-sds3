@@ -8,12 +8,12 @@ const Home = () => {
       <NavBar/>
       <div className="container">
         <div className="jumbotron">
-          <h1 className="display-4">DSVendas</h1>
-          <p className="lead">Analise o desempenho das suas vendas por diferentes perspectivas</p>
+          <h1 className="display-4">CONTROLE DE FINANÇAS</h1>
+          <p className="lead">Organizando aqui a nossa vida financeira s2</p>
           <hr/>
-          <p>Esta aplicação consiste em exibir um dashboard a partir de dados fornecidos por um back end construído com Spring Boot.</p>
+          <p>Essa aplicação tem o intuito de auxiliar na análise das nossas finanças.</p>
           <Link className="btn btn-primary btn-lg" to="/dashboard">
-            Acessar o dashboard
+            Acessar
           </Link>
         </div>
       </div>
