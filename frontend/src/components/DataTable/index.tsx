@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {SalePage} from "../../types/sale";
+import {IncomingPage} from "../../types/incoming";
 import axios from "axios";
 import {BASE_URL} from "../../utils/requests";
 import {formatLocalDate} from "../../utils/format";
@@ -8,7 +8,7 @@ import Pagination from "../pagination";
 const DataTable = () => {
 
   const [activePage, setActivePage] = useState(0)
-  const [page, setPage] = useState<SalePage>({
+  const [page, setPage] = useState<IncomingPage>({
     first: true,
     last: true,
     number: 0,
@@ -17,7 +17,7 @@ const DataTable = () => {
   });
 
   useEffect(()=> {
-    axios.get(`${BASE_URL}/sales?page=${activePage}&size=20&sort=date,desc`)
+    axios.get(`${BASE_URL}/Incomings?page=${activePage}&size=20&sort=data,desc`)
       .then(response => {
         setPage(response.data);
       });
@@ -35,20 +35,18 @@ const DataTable = () => {
           <thead>
           <tr>
             <th>Data</th>
-            <th>Vendedor</th>
-            <th>Clientes visitados</th>
-            <th>Negócios fechados</th>
-            <th>Valor</th>
+            <th>Nome</th>
+            <th>Valor Esperado</th>
+            <th>Valor Real</th>
           </tr>
           </thead>
           <tbody>
-            {page.content?.map(item => (
+            {page.value?.map(item => (
               <tr key={item.id}>
-                <td>{formatLocalDate(item.date, "dd/MM/yyyy")}</td>
-                <td>{item.seller.name}</td>
-                <td>{item.visited}</td>
-                <td>{item.deals}</td>
-                <td>{item.amount.toFixed(2)}</td>
+                <td>{formatLocalDate(item.data, "dd/MM/yyyy")}</td>
+                <td>{item.name}</td>
+                <td>{item.valor_esperado}</td>
+                <td>{item.valor_real}</td>
               </tr>
             ))}
           </tbody>
